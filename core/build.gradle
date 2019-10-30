@@ -4,7 +4,9 @@ apply plugin: 'com.jakewharton.butterknife'
 //Arout
 apply plugin: 'com.alibaba.arouter'
 //打包插件
-//apply from: 'maven-release-aar.gradle'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group='com.github.cuiluan'
 android {
     compileSdkVersion 28
     buildToolsVersion "29.0.2"

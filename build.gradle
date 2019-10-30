@@ -12,6 +12,8 @@ buildscript {
         classpath "com.alibaba:arouter-register:1.0.2"
         //butterknife插件
         classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.0'
+
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
 
