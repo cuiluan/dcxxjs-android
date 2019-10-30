@@ -1,34 +1,109 @@
 apply plugin: 'com.android.library'
+//当开发library使用
+apply plugin: 'com.jakewharton.butterknife'
+//Arout
+apply plugin: 'com.alibaba.arouter'
 
 android {
     compileSdkVersion 28
     buildToolsVersion "29.0.2"
-
-
+    //开启DataBindg
+    dataBinding {
+        enabled = true
+    }
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
-    }
 
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ AROUTER_MODULE_NAME : project.getName() ]
+            }
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            //signingConfig signingConfigs.release
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //signingConfig signingConfigs.debug
         }
     }
 
+    //资源文件前缀
+    resourcePrefix 'dcxxjs_core'
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    //解决项目方法数超过64k了
+    api 'androidx.multidex:multidex:2.0.1'
+    //测试
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    //兼容包
+    api 'androidx.appcompat:appcompat:1.1.0'
+    api 'androidx.recyclerview:recyclerview:1.0.0'
+    api 'androidx.legacy:legacy-support-v4:1.0.0'
+    api 'com.google.android.material:material:1.0.0'
+    api 'androidx.annotation:annotation:1.1.0'
+    api 'com.github.bumptech.glide:glide:4.9.0'
+    api 'androidx.constraintlayout:constraintlayout:1.1.3'
+    api 'androidx.cardview:cardview:1.0.0'
+    //引入网络访问
+    api 'com.squareup.okhttp3:okhttp:3.12.0'
+    api 'com.squareup.okhttp3:logging-interceptor:3.6.0'
+    api 'com.google.code.gson:gson:2.8.5'
+    api 'com.squareup.retrofit2:retrofit:2.5.0'
+    api 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    api 'com.squareup.retrofit2:converter-gson:2.5.0'
+    api 'com.squareup.retrofit2:converter-scalars:2.0.0'
+    api 'io.reactivex:rxandroid:1.2.0'
+    //引入Xutils
+    api 'org.xutils:xutils:3.3.36'
+    //引入验证框架
+    api 'com.mobsandgeeks:android-saripaar:2.0.3'
+    //引入更新APP
+    api 'com.qianwen:update-app:3.5.2'
+    api 'com.qianwen:okhttp-utils:3.8.0'
+    //统一RSA加密标准
+    api group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.60'
+    //引入Lottie动画库
+    api 'com.airbnb.android:lottie:3.0.6'
+    //引入反射joor
+    api 'org.jooq:joor:0.9.6'
+    //android进程监控
+    api 'com.jaredrummler:android-processes:1.1.1'
+    //引入Arouter
+    api 'com.alibaba:arouter-api:1.4.1'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+    //沉浸式基础依赖包
+    api 'com.gyf.immersionbar:immersionbar:3.0.0'
+    // 沉浸式fragment快速实现
+    api 'com.gyf.immersionbar:immersionbar-components:3.0.0'
+
+    //引入SmartRefreshLayout
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
+    api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-14'//没有使用特殊Header，可以不加这行
+
+    //多态性界面
+    api 'com.classic.common:multiple-status-view:1.6'
+    //引入butterknife，不在使用xutils绑定界面，主要原因：当模块化开发时R文件为非静态常量，xutils无解决方案,butterknife采用R2的形式解决
+    api 'com.jakewharton:butterknife:10.2.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
+
 }

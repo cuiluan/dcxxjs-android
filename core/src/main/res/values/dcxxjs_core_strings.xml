@@ -1,0 +1,5 @@
+<resources>
+    <integer name="ver">1</integer>
+    <string name="dbname">merchant.db</string>
+    <string name="dbpath">1</string>
+</resources>

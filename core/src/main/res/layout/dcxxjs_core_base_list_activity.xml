@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<!--默认界面-->
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.classic.common.MultipleStatusView
+            android:id="@+id/multiple_status_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/title"
+            android:background="@android:color/transparent"
+            app:emptyView="@layout/dcxxjs_core_empty_view"
+            app:errorView="@layout/dcxxjs_core_error_view"
+            app:loadingView="@layout/dcxxjs_core_loading_view"
+            app:noNetworkView="@layout/dcxxjs_core_no_network_view">
+
+            <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                android:id="@+id/listlayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@android:color/transparent"
+                    android:overScrollMode="never" />
+            </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+        </com.classic.common.MultipleStatusView>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,4 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/root_menu_select_01" android:state_checked="true" />
+    <item android:drawable="@drawable/root_menu_unselect_01" android:state_checked="false" />
+</selector>
