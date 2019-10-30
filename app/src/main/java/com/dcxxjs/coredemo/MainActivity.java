@@ -9,6 +9,8 @@ import androidx.databinding.ViewDataBinding;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.dcxxjs.core.baseactivity.BaseActivity;
 import com.dcxxjs.core.baseactivity.BindContentView;
+import com.dcxxjs.core.networkinterface.SignBaseFrom;
+import com.dcxxjs.core.networkinterface.SignBaseObserver;
 
 import butterknife.BindView;
 import butterknife.OnClick;
